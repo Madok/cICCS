@@ -1,0 +1,101 @@
+extends layout
+
+block content
+    #spinStudent
+        .spin
+    .col-md-3
+        button(class='btn btn-success',type='button',data-toggle="modal",data-target="#addStudentModal")
+            span(aria-hidden='true').glyphicon.glyphicon-plus
+            |  dodaj studenta
+    div(class="modal fade",id="addStudentModal",tabindex="-1",role="dialog",aria-labelledby="myModalLabel",aria-hidden="true")
+        div(class="modal-dialog")
+            div(class="modal-content")
+                div(class="modal-header")
+                    button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4(class="modal-title",id="myModalLabel") Modal title
+
+                div(class="modal-body")
+                   include form/studentForm
+                div(class="modal-footer")
+                    button(type="button",class="btn btn-default",data-dismiss="modal") Close
+                    button(type="button",class="btn btn-primary",id='addStudentButton') Save changes
+    .col-md-10
+        table#studentsList.table.table-striped
+            thead
+                tr
+                    th #
+                    th imie
+                    th nazwisko
+                    th index
+                    th
+            tbody
+                if students && students.length
+                    each s, index in students
+                        tr
+                            td= index+1
+                            td= s.first_name
+                            td= s.last_name
+                            td= s.number
+                            td
+                                button(class="btn btn-danger",data-studentid=s.id)
+                                    span.glyphicon.glyphicon-remove
+
+                else
+                    div(class="alert alert-info alert-dismissible fade in",role="alert")
+                        button(type="button",class="close",data-dismiss="alert",aria-label="Close")
+                            span(aria-hidden="true") &times;
+                        | Brak studentow w bazie danych
+    div(class="modal fade",id="deleteStudentModal")
+        div(class="modal-dialog")
+            div(class="modal-content")
+                div(class="modal-header")
+                    button(type="button",class="close",data-dismiss="modal",aria-label="Close")
+                        span(aria-hidden="true") &times;
+                    h4(class="modal-title") Usunac studenta?
+
+                div(class="modal-body")
+
+                div(class="modal-footer")
+                    button(type="button",class="btn btn-danger") Delete
+                    button(type="button",class="btn btn-default",data-dismiss="modal") Cancel
+    #managerCryptoClient.panel.panel-primary
+        .panel-heading Manager
+        .panel-body
+            ul(class="nav nav-pills nav-tab-mCC",role="tablist")
+                li(role="presentation")
+                    a(href="#managerCryptoClientViewRequest",aria-controls="managerCryptoClientViewRequest",role="tab",data-toggle="tab") podglad zapytanie
+                li(role="presentation")
+                    a(href="#managerCryptoClientIndo",aria-controls="managerCryptoClientIndo",role="tab",data-toggle="tab") info
+            .tab-content
+                div(role="tabpanel",class="tab-pane active",id="managerCryptoClientViewRequest")
+                div(role="tabpanel",class="tab-pane active",id="managerCryptoClientIndo")
+                    h3 CryptoClient i CryptoServer
+                    | pozwala szyfrować dane w komunikacji klient serwere.
+                    br
+                    | Wersja 0.0.5v pozwala jedynie na urzycie symetrycznego szyfru blokowego AES-256.
+                    | Szyfr AES(Advanced Encryption Standard, robocza nazwa "Rijndael") powstał w 1997r.
+                    | na potrzeby przetargu ogłoszonego przez agencję federalną USA NIST.
+                    | Przyczyną ogłoszenia konkursu była nie wystarczająca siła algorytmu DES.
+                    | W 2006r. udowodniono iż AES nie jest w pełni odporny na ataki XSL.
+                    | 2009r. opublikowano dwa nowe ataki z użyciem kluczy pokrewnych.
+                    | Mimo udowodnionych ataków, moc obliczeniowa i czas potrzebne na złamanie AES
+                    | są na tyle duże, iż algorytm AES nadal uważany jest za standard FIPS-197.
+                    br
+                    | Wykożystywane Technologie.
+                    ul
+                        li jQuery
+                        li CryptoJS
+    script(src='/javascripts/studentForm.js',type='text/javascript')
+        //
+    script(src='/javascripts/jquery.spin.js',type='text/javascript')
+        //
+    script.
+        $(document).ready(function(){
+            $("#managerCryptoClient ul a").click(function (e) {
+               e.preventDefault();
+               $(this).tab('show');
+             }).eq(0).tab('show');
+        });
+        //
+    script(src='/javascripts/managerCryptoClient.js',type='text/javascript')

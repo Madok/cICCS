@@ -1,0 +1,41 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/jquery.spin.css')
+    script(src='/javascripts/jquery.min.js',type='text/javascript')
+    script(src='/javascripts/aes.js',type='text/javascript')
+    script(src='/javascripts/myLib.js',type='text/javascript')
+    script(src='/javascripts/cryptoClient.js',type='text/javascript')
+  body
+     .navbar.navbar-default.navbar-fixed-top
+         .container-fluid
+             if locals.auth
+                 .pull-right
+                     p.navbar-text witaj #{locals.user['name']}
+                     a(class='btn btn-default navbar-btn',href='/user/logout') wyloguj
+    .page-header
+      h1 Kryptografia
+        br
+        small szyfrowanie danych klijent serwer
+
+    .container
+        block content
+    footer(role='contentinfo',class='navbar-fixed-bottom')
+        .container
+            .row
+                .col-md-2.col-md-offset-2
+                    h5 By Maciej Staszewski
+                .col-md-3
+                    h5  Lodz University
+                        | of Technology
+
+                .col-md-2
+                    h5
+                        address
+                            abbr(title='contact') staszewski.maciej92@gmail.com
+    script(src='/javascripts/bootstrap.min.js',type='text/javascript')
+

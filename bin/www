@@ -1,0 +1,18 @@
+#!/usr/bin/env node
+var myApp = 1;
+global._ = myApp;
+
+var debug = require('debug')('CryptoInComunicationClientServer');
+var app = require('../app');
+var io = app.http().io(app);
+
+app.set('port', process.env.PORT || 3000);
+
+var server = io.listen(app.get('port'), function() {
+  debug('Express server listening on port ' + server.address().port);
+});
+
+//io.on('connection',function(){
+//    console.log("sss");
+//});
+

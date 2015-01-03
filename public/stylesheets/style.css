@@ -1,0 +1,65 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+.input-group {
+    margin-bottom: 5px;
+}
+#spinStudent {
+    position: fixed;
+    top:0;
+    right:0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: none;
+}
+#spinStudent .spin{
+    top: 50%;
+    left: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+}
+#managerCryptoClient{
+    position: fixed;
+    z-index: 30000;
+    width: 400px;
+    height: 400px;
+    bottom: 25px;
+    right: 0px;
+}
+#managerCryptoClient .tab-content{
+    max-height: 305px;
+    position: absolute;
+    overflow: hidden;
+    overflow-y: scroll;
+    width: 370px;
+
+}
+#managerCC{
+    height: 300px;
+    width: 100%;
+}
+#managerCC .managerCC-body{
+    height: 50%;
+    overflow: hidden;
+}
+#managerCC .managerCC-body .managerCC-head{
+    width:  100%;
+    padding: 8px;
+    background-color: #ccc;
+}
+#managerCC .managerCC-body .managerCC-content{
+    padding: 0;
+    max-height: 120px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    overflow: hidden;
+    overflow-y: scroll;
+}
