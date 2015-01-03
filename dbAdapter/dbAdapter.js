@@ -7,10 +7,10 @@ var mysql = require("mysql");
 function DbAdapter(){
     var o = this;
     var configConnetion = {
-        host : "localhost",
-        user : "root",
-        password : "",
-        database : "crypto"
+        host : "127.9.5.130",
+        user : "adminrz7ZPdQ",
+        password : "MSMv7FLblvIk",
+        database : "ciccs"
 
         };
     var lastResult = null;
